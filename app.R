@@ -135,7 +135,7 @@ with(frigo.5, {
 
 mat1.d<-as.matrix(mat1)
 
-ht.f2 =   Heatmap(mat1.a, name = "DIEPVRIES F2",col=colors, rect_gp = gpar(col = "white", lwd = 2),
+ht.f2 =   Heatmap(mat1.a, name = "FREEZER F2",col=colors, rect_gp = gpar(col = "white", lwd = 2),
                   row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 DIEPVRIES",
                   cluster_row_slices = FALSE,cluster_column_slices = FALSE, show_column_dend = FALSE, show_row_dend = FALSE, 
                   cell_fun = function(j, i, x, y, width, height, fill){grid.text(mat2.a[i, j], x, y, gp = gpar(fontsize = 9))},
@@ -144,14 +144,14 @@ ht.f2 =   Heatmap(mat1.a, name = "DIEPVRIES F2",col=colors, rect_gp = gpar(col =
 
 ht1 = draw(ht.f2)
 
-ht.f3 =   Heatmap(mat1.b, name = "DIEPVRIES F3",col=colors, rect_gp = gpar(col = "white", lwd = 2),
+ht.f3 =   Heatmap(mat1.b, name = "FREEZER F3",col=colors, rect_gp = gpar(col = "white", lwd = 2),
                   row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 DIEPVRIES",
                   cluster_row_slices = FALSE,cluster_column_slices = FALSE, show_column_dend = FALSE, show_row_dend = FALSE, 
                   cell_fun = function(j, i, x, y, width, height, fill){grid.text(mat2.b[i, j], x, y, gp = gpar(fontsize = 9))},
                   width = unit(12, "cm"), show_column_names = F, show_row_names = F,row_order = order(rownames(mat1.b)), column_order=sort(colnames(mat1.b)))
 ht2 = draw(ht.f3)
 
-ht.f4 =   Heatmap(mat1.c, name = "DIEPVRIES F4",col=colors, rect_gp = gpar(col = "white", lwd = 2),
+ht.f4 =   Heatmap(mat1.c, name = "FREEZER F4",col=colors, rect_gp = gpar(col = "white", lwd = 2),
                   row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 DIEPVRIES",
                   cluster_row_slices = FALSE,cluster_column_slices = FALSE, show_column_dend = FALSE, show_row_dend = FALSE, 
                   cell_fun = function(j, i, x, y, width, height, fill){grid.text(mat2.c[i, j], x, y, gp = gpar(fontsize = 9))},
@@ -159,7 +159,7 @@ ht.f4 =   Heatmap(mat1.c, name = "DIEPVRIES F4",col=colors, rect_gp = gpar(col =
 
 ht3 = draw(ht.f4)
 
-ht.f5 =   Heatmap(mat1.d, name = "DIEPVRIES F4",col=colors, rect_gp = gpar(col = "white", lwd = 2),
+ht.f5 =   Heatmap(mat1.d, name = "FREEZER F5",col=colors, rect_gp = gpar(col = "white", lwd = 2),
                   row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 DIEPVRIES",
                   cluster_row_slices = FALSE,cluster_column_slices = FALSE, show_column_dend = FALSE, show_row_dend = FALSE, 
                   cell_fun = function(j, i, x, y, width, height, fill){grid.text(mat2.d[i, j], x, y, gp = gpar(fontsize = 9))},
