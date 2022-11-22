@@ -10,11 +10,20 @@ library(readxl)
 #install.packages()
 rm(list = ls())
 
-#install.packages("BiocManager")
-#BiocManager::install("InteractiveComplexHeatmap")
+sysname <- Sys.info()["sysname"]
 
-path<-paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Vriezers_80.xlsx')
+#path<-paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Vriezers_80.xlsx')
 #path<-paste('./Vriezers_80.xlsx')
+
+if(sysname == "Windows") {
+  path<-paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Vriezers_80.xlsx')
+} else if(sysname == "Linux") {
+  path<-paste('./Vriezers_80.xlsx')
+}
+
+
+
+
 frigo.2<-read_excel(path, sheet = "F2")
 frigo.3<-read_excel(path, sheet = "F3")
 frigo.4<-read_excel(path, sheet = "F4")
