@@ -22,8 +22,6 @@ if(sysname == "Windows") {
 }
 
 
-
-
 frigo.2<-read_excel(path, sheet = "F2")
 frigo.3<-read_excel(path, sheet = "F3")
 frigo.4<-read_excel(path, sheet = "F4")
