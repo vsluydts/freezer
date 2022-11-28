@@ -143,7 +143,7 @@ with(frigo.5, {
 mat1.d<-as.matrix(mat1)
 
 ht.f2 =   Heatmap(mat1.a, name = "FREEZER F2",col=colors, rect_gp = gpar(col = "white", lwd = 2),
-                  row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 DIEPVRIES",
+                  row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 FREEZER",
                   cluster_row_slices = FALSE,cluster_column_slices = FALSE, show_column_dend = FALSE, show_row_dend = FALSE, 
                   cell_fun = function(j, i, x, y, width, height, fill){grid.text(mat2.a[i, j], x, y, gp = gpar(fontsize = 9))},
                   width = unit(12, "cm"), show_column_names = F, show_row_names = F,row_order = order(rownames(mat1.a)), column_order=sort(colnames(mat1.a)))
@@ -152,14 +152,14 @@ ht.f2 =   Heatmap(mat1.a, name = "FREEZER F2",col=colors, rect_gp = gpar(col = "
 ht1 = draw(ht.f2)
 
 ht.f3 =   Heatmap(mat1.b, name = "FREEZER F3",col=colors, rect_gp = gpar(col = "white", lwd = 2),
-                  row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 DIEPVRIES",
+                  row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 FREEZER",
                   cluster_row_slices = FALSE,cluster_column_slices = FALSE, show_column_dend = FALSE, show_row_dend = FALSE, 
                   cell_fun = function(j, i, x, y, width, height, fill){grid.text(mat2.b[i, j], x, y, gp = gpar(fontsize = 9))},
                   width = unit(12, "cm"), show_column_names = F, show_row_names = F,row_order = order(rownames(mat1.b)), column_order=sort(colnames(mat1.b)))
 ht2 = draw(ht.f3)
 
 ht.f4 =   Heatmap(mat1.c, name = "FREEZER F4",col=colors, rect_gp = gpar(col = "white", lwd = 2),
-                  row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 DIEPVRIES",
+                  row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 FREEZER",
                   cluster_row_slices = FALSE,cluster_column_slices = FALSE, show_column_dend = FALSE, show_row_dend = FALSE, 
                   cell_fun = function(j, i, x, y, width, height, fill){grid.text(mat2.c[i, j], x, y, gp = gpar(fontsize = 9))},
                   width = unit(12, "cm"), show_column_names = F, show_row_names = F,row_order = order(rownames(mat1.c)), column_order=sort(colnames(mat1.c)))
@@ -167,7 +167,7 @@ ht.f4 =   Heatmap(mat1.c, name = "FREEZER F4",col=colors, rect_gp = gpar(col = "
 ht3 = draw(ht.f4)
 
 ht.f5 =   Heatmap(mat1.d, name = "FREEZER F5",col=colors, rect_gp = gpar(col = "white", lwd = 2),
-                  row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4),column_title = "-80 DIEPVRIES",
+                  row_split = sort(rep(c("S1", "S2", "S3", "S4", "S5"), 4)), column_split= rep(1:5, each=4), column_title = "-80 FREEZER",
                   cluster_row_slices = FALSE,cluster_column_slices = FALSE, show_column_dend = FALSE, show_row_dend = FALSE, 
                   cell_fun = function(j, i, x, y, width, height, fill){grid.text(mat2.d[i, j], x, y, gp = gpar(fontsize = 9))},
                   width = unit(12, "cm"), show_column_names = F, show_row_names = F,row_order = order(rownames(mat1.c)), column_order=sort(colnames(mat1.d)))
@@ -288,8 +288,6 @@ ui = dashboardPage(
 
 server = function(input, output, session) {
   
-  
-  
   makeInteractiveComplexHeatmap(input, output, session, ht1, "heatmap_2")
   makeInteractiveComplexHeatmap(input, output, session, ht2, "heatmap_3")
   makeInteractiveComplexHeatmap(input, output, session, ht3, "heatmap_4")
@@ -321,5 +319,4 @@ server = function(input, output, session) {
 shinyApp(ui, server)
 
 
-#testje<- paste('./Diepvriezers_F2F3.png')
 
