@@ -20,3 +20,11 @@ To install the source code of the app from source do this
 To use the app goto 143.169.7.30/shiny/freezer/
 
 thats all for now folks.
+
+
+## Track Issues
+
+1. ADD DBS freezer
+2. ADD CRUD table
+3. Alles in GOLEM
+3. 
