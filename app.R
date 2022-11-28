@@ -17,9 +17,15 @@ sysname <- Sys.info()["sysname"]
 
 if(sysname == "Windows") {
   path<-paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Vriezers_80.xlsx')
+  path2 <- paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Diepvriezers_F2F3.png')
+  path3 <- paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Diepvriezers_F4F5.png')
 } else if(sysname == "Linux") {
   path<-paste('./Vriezers_80.xlsx')
+  path2 <- paste('./Diepvriezers_F2F3.png')
+  path3 <- paste('./Diepvriezers_F4F5.png')
 }
+
+
 
 
 frigo.2<-read_excel(path, sheet = "F2")
@@ -308,8 +314,8 @@ server = function(input, output, session) {
   })
   
   
-  output$my_image1<-renderImage({list(src='C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Diepvriezers_F2F3.png', height='300px', width='400px', alt="something went wrong")}, deleteFile = FALSE)
-  output$my_image2<-renderImage({list(src='C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Diepvriezers_F4F5.png', height='300px', width='400px', alt="something went wrong")}, deleteFile = FALSE)
+  output$my_image1<-renderImage({list(src=path2, height='300px', width='400px', alt="something went wrong")}, deleteFile = FALSE)
+  output$my_image2<-renderImage({list(src=path3, height='300px', width='400px', alt="something went wrong")}, deleteFile = FALSE)
   output$table_F2<-renderDataTable(frigo.2[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
   output$table_F3<-renderDataTable(frigo.3[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
   output$table_F4<-renderDataTable(frigo.4[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
