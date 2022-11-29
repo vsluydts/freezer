@@ -17,10 +17,12 @@ sysname <- Sys.info()["sysname"]
 
 if(sysname == "Windows") {
   path<-paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Vriezers_80.xlsx')
+  path_DBS<-paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\DBS_20.xlsx')
   path2 <- paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Diepvriezers_F2F3.png')
   path3 <- paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Diepvriezers_F4F5.png')
 } else if(sysname == "Linux") {
   path<-paste('./Vriezers_80.xlsx')
+  path_DBS<-paste('./DBS_20.xlsx')
   path2 <- paste('./Diepvriezers_F2F3.png')
   path3 <- paste('./Diepvriezers_F4F5.png')
 }
@@ -32,6 +34,7 @@ frigo.2<-read_excel(path, sheet = "F2")
 frigo.3<-read_excel(path, sheet = "F3")
 frigo.4<-read_excel(path, sheet = "F4")
 frigo.5<-read_excel(path, sheet = "F5")
+DBS<-read_excel(path_DBS, sheet = "DBS samples")
 
 
 x.out<-as.factor(c(rep(rep(letters[1:4], 4),5), rep(rep(letters[5:8], 4),5), 
@@ -267,8 +270,14 @@ body = dashboardBody(
             fluidRow(
               box(title="tabel_F5", width=10, solidHeader=TRUE, background = "green",
                   DT::dataTableOutput("table_F5"))
-            ))
+            )),
     
+    tabItem(tabName = "DBS_Freezer", 
+            
+            fluidRow(
+              box(title="tabel_DBS", width=10, solidHeader=TRUE, background = "green",
+                  DT::dataTableOutput("table_DBS"))
+            ))
   ))
 
 
@@ -283,7 +292,8 @@ ui = dashboardPage(
       menuItem("Freezer F2", tabName = "Freezer_F2"),
       menuItem("Freezer F3", tabName = "Freezer_F3"),
       menuItem("Freezer F4", tabName = "Freezer_F4"),
-      menuItem("Freezer F5", tabName = "Freezer_F5")
+      menuItem("Freezer F5", tabName = "Freezer_F5"), 
+      menuItem("Blood Spot Freezer", tabName = "DBS_Freezer")
     )
   ),
   body)
@@ -320,6 +330,7 @@ server = function(input, output, session) {
   output$table_F3<-renderDataTable(frigo.3[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
   output$table_F4<-renderDataTable(frigo.4[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
   output$table_F5<-renderDataTable(frigo.5[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
+  output$table_DBS<-renderDataTable(DBS[, 1:14], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
 }
 
 shinyApp(ui, server)
