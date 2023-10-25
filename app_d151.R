@@ -24,6 +24,7 @@ if(sysname == "Windows") {
   path4 <- paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\D151.jpg')
 } else if(sysname == "Linux") {
   path<-paste('./Vriezers_80.xlsx')
+  path_DBS<-paste('./DBS_20.xlsx')
   path_D151<-paste('./D151.xlsx')
   path2 <- paste('./Diepvriezers_F2F3.png')
   path3 <- paste('./Diepvriezers_F4F5.png')
@@ -279,13 +280,14 @@ body = dashboardBody(
                   DT::dataTableOutput("table_DBS"))
             )),
     
-    # szeventh tab content
+    # seventh tab content
     tabItem(tabName = "D151", 
             
             fluidRow(
               imageOutput("my_image3")),
+            
             fluidRow(
-              box(title="tabel_D151", width=10, solidHeader=TRUE, background = "green",
+              box(title="tabel_D151", width=10, solidHeader=TRUE, background = "white",
                   DT::dataTableOutput("table_D151"))
             ))
   ))
@@ -332,7 +334,7 @@ server = function(input, output, session) {
   
   output$my_image1<-renderImage({list(src=path2, height='300px', width='400px', alt="something went wrong")}, deleteFile = FALSE)
   output$my_image2<-renderImage({list(src=path3, height='300px', width='400px', alt="something went wrong")}, deleteFile = FALSE)
-  output$my_image3<-renderImage({list(src=path4, height='300px', width='400px', alt="something went wrong")}, deleteFile = FALSE)
+  output$my_image3<-renderImage({list(src=path4, height='600px', width='800px', alt="something went wrong")}, deleteFile = FALSE)
   output$table_F2<-renderDataTable(frigo.2[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
   output$table_F3<-renderDataTable(frigo.3[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
   output$table_F4<-renderDataTable(frigo.4[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
