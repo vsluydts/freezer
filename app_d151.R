@@ -218,7 +218,7 @@ body = dashboardBody(
             ),
             
             fluidRow(
-              box(title="tabel_F2", width=10, solidHeader=TRUE, background = "green",
+              box(title="tabel_F2", width=10, solidHeader=TRUE, background = "olive",
                   DT::dataTableOutput("table_F2"))
             )),
     
@@ -236,7 +236,7 @@ body = dashboardBody(
             
             
             fluidRow(
-              box(title="tabel_F3", width=10, solidHeader=TRUE, background = "green",
+              box(title="tabel_F3", width=10, solidHeader=TRUE, background = "olive",
                   DT::dataTableOutput("table_F3"))
             )),
     
@@ -252,7 +252,7 @@ body = dashboardBody(
             ),
             
             fluidRow(
-              box(title="tabel_F4", width=10, solidHeader=TRUE, background = "green",
+              box(title="tabel_F4", width=10, solidHeader=TRUE, background = "olive",
                   DT::dataTableOutput("table_F4"))
             )),
     
@@ -268,7 +268,7 @@ body = dashboardBody(
             ),
             
             fluidRow(
-              box(title="tabel_F5", width=10, solidHeader=TRUE, background = "green",
+              box(title="tabel_F5", width=10, solidHeader=TRUE, background = "olive",
                   DT::dataTableOutput("table_F5"))
             )),
     
@@ -276,18 +276,22 @@ body = dashboardBody(
     tabItem(tabName = "DBS_Freezer", 
             
             fluidRow(
-              box(title="tabel_DBS", width=10, solidHeader=TRUE, background = "green",
+              box(title="tabel_DBS", width=10, solidHeader=TRUE, background = "olive",
                   DT::dataTableOutput("table_DBS"))
             )),
     
     # seventh tab content
-    tabItem(tabName = "D151", 
+    tabItem(tabName = "D151_fig", 
             
             fluidRow(
-              imageOutput("my_image3")),
-            
+              imageOutput("my_image3"))
+            ),
+    
+    # seventh tab content
+    tabItem(tabName = "D151_tab", 
+          
             fluidRow(
-              box(title="tabel_D151", width=10, solidHeader=TRUE, background = "white",
+              box(title="tabel_D151", width=10, solidHeader=TRUE, background = "olive",
                   DT::dataTableOutput("table_D151"))
             ))
   ))
@@ -304,7 +308,8 @@ ui = dashboardPage(
       menuItem("Freezer F4", tabName = "Freezer_F4"),
       menuItem("Freezer F5", tabName = "Freezer_F5"), 
       menuItem("Blood Spot Freezer", tabName = "DBS_Freezer"), 
-      menuItem("D151", tabName = "D151")
+      menuItem("D151_overview", tabName = "D151_fig"),
+      menuItem("D151_table", tabName = "D151_tab")
     )
   ),
   body)
