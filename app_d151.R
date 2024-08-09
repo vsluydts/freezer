@@ -17,6 +17,7 @@ sysname <- Sys.info()["sysname"]
 
 if(sysname == "Windows") {
   path<-paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Vriezers_80.xlsx')
+  path20<-paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Vriezers_20.xlsx')
   path_DBS<-paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\DBS_20.xlsx')
   path_D151<-paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\D151.xlsx')
   path2 <- paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\Diepvriezers_F2F3.png')
@@ -24,6 +25,7 @@ if(sysname == "Windows") {
   path4 <- paste('C:\\Users\\vince\\OneDrive - Universiteit Antwerpen\\VISL_HD\\Projects\\DataMan\\Labo_Stockage\\DiepVries_git\\D151.jpg')
 } else if(sysname == "Linux") {
   path<-paste('./Vriezers_80.xlsx')
+  path20<-paste('./Vriezers_20.xlsx')
   path_DBS<-paste('./DBS_20.xlsx')
   path_D151<-paste('./D151.xlsx')
   path2 <- paste('./Diepvriezers_F2F3.png')
@@ -39,7 +41,7 @@ frigo.4<-read_excel(path, sheet = "F4")
 frigo.5<-read_excel(path, sheet = "F5")
 DBS<-read_excel(path_DBS, sheet = "DBS samples")
 D151<-read_excel(path_D151, sheet = "Sheet1")
-
+V20 <- read_excel(path20, sheet="Sheet1")
 x.out<-as.factor(c(rep(rep(letters[1:4], 4),5), rep(rep(letters[5:8], 4),5), 
                    rep(rep(letters[9:12], 4),5), rep(rep(letters[13:16], 4),5), 
                    rep(rep(letters[17:20], 4),5)))
@@ -281,13 +283,21 @@ body = dashboardBody(
             )),
     
     # seventh tab content
+    tabItem(tabName = "Freezer_20", 
+            
+            fluidRow(
+              box(title="Freezer_20", width=10, solidHeader=TRUE, background = "olive",
+                  DT::dataTableOutput("table_V20"))
+            )),
+    
+    # eight tab content
     tabItem(tabName = "D151_fig", 
             
             fluidRow(
               imageOutput("my_image3"))
             ),
     
-    # seventh tab content
+    # nienth tab content
     tabItem(tabName = "D151_tab", 
           
             fluidRow(
@@ -307,7 +317,8 @@ ui = dashboardPage(
       menuItem("Freezer F3", tabName = "Freezer_F3"),
       menuItem("Freezer F4", tabName = "Freezer_F4"),
       menuItem("Freezer F5", tabName = "Freezer_F5"), 
-      menuItem("Blood Spot Freezer", tabName = "DBS_Freezer"), 
+      menuItem("Blood Spot Freezer", tabName = "DBS_Freezer"),
+      menuItem("Freezer 20", tabName = "Freezer_20"),
       menuItem("D151_overview", tabName = "D151_fig"),
       menuItem("D151_table", tabName = "D151_tab")
     )
@@ -344,6 +355,7 @@ server = function(input, output, session) {
   output$table_F3<-renderDataTable(frigo.3[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
   output$table_F4<-renderDataTable(frigo.4[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
   output$table_F5<-renderDataTable(frigo.5[,namen], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
+  output$table_V20<-renderDataTable(V20[,c(2:4, 6,7,12:19)], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
   output$table_DBS<-renderDataTable(DBS[, 1:14], extensions = list(Scroller = NULL), options = list(scrollX = TRUE))
   output$table_D151 <-renderDataTable(D151[,1:4], extension = list(Scroller=NULL), options = list(scrollX = TRUE))
 }
